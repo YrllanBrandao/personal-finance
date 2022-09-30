@@ -1,0 +1,42 @@
+<%- include("partials/header.ejs")%> <%- include("partials/navbar.ejs")%>
+<div class="container">
+  <div class="card margin-top">
+    <div class="card-header">
+      <h2>Register</h2>
+    </div>
+    <div class="card-body">
+      <form action="/register/save" method="post">
+        <fieldset>
+          <label for="email" class="form-label">E-mail</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="email@mail.com"
+            class="form-control"
+          />
+        </fieldset>
+        <fieldset>
+          <legend>Password</legend>
+          <input
+            type="password"
+            name="password"
+            placeholder="enter your password"
+            class="form-control"
+          />
+        </fieldset>
+
+        <fieldset class="form-vertical-gap">
+          <label for="term"
+            ><a href="/termsandconditions" class="link" target="_blank"
+              >Accept the terms and conditions</a
+            ></label
+          >
+          <input type="checkbox" name="term" required />
+          <br />
+          <button class="btn btn-success mx-auto">Login</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include("partials/footer.ejs")%>

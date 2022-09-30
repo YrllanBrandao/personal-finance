@@ -1,0 +1,41 @@
+<%- include("../../partials/admin/header.ejs")%>
+<%- include("../../partials/admin/navbar.ejs")%>
+<div class="container">
+    
+    <div class="card margin-top">
+
+        <div class="card-header d-flex justify-content-center">
+            <h2 >Expenses</h2>
+        </div>
+        <div class="card-body ">
+            <table class="table table-striped">
+                <thead>
+                    <th scope="col">Data</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Action</th>
+
+                </thead>
+                <tbody>
+                    <%
+                    expenses.forEach((expense)=>{%>
+                        <tr>
+                            <td> <%=date%></td>
+                            <td> <%=expense.title%></td>
+                            <td> <%=expense.value%></td>
+                            <td> <a href="#" class="btn btn-dark">read full</a></td>
+                            
+
+                        </tr>
+                    <%})
+                    %>      
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    
+
+
+</div>
+<%- include("../../partials/admin/footer.ejs")%>

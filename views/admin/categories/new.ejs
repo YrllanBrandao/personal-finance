@@ -1,0 +1,24 @@
+<%- include("../../partials/admin/header.ejs")%>
+<%- include("../../partials/admin/navbar.ejs")%>
+<div class="container">
+    
+
+    <div class="card margin-top">
+
+        <div class="card-header">
+            <h2 class="red">Create Category</h2>
+        </div>
+        <div class="card-body ">
+            <form action="/admin/categories/save" method="post">
+                <input type="text" name="title" placeholder="enter a title (max 12)" class="form-control" maxlength="12">
+                <br>
+               <button class="btn btn-success" type="submit">done</button>
+            </form>
+
+        </div>
+
+    </div>
+
+
+</div>
+<%- include("../../partials/admin/footer.ejs")%>

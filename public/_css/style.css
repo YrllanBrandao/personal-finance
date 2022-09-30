@@ -1,0 +1,11 @@
+.margin-top{
+    margin-top: var(--vh);
+}
+.gap-vertical-form {
+    margin-bottom: 10px;
+}
+
+.form-vertical-gap{
+    margin-top: 10px;
+}
+

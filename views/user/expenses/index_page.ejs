@@ -1,0 +1,123 @@
+<%- include("../../partials/user/header_graph.ejs")%>
+<%- include("../../partials/user/navbar.ejs")%>
+<div class="container">
+    
+    
+    <div class="card margin-top">
+
+       
+        <div class="card-header d-flex justify-content-center">
+            <h2 >Expenses</h2>
+            
+        </div>
+        <div class="card-body ">
+            <table class="table table-striped">
+                <thead>
+                    <th scope="col">Data</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Action</th>
+
+                </thead>
+                <tbody>
+                    <%
+                    result.expenses.rows.forEach((expense)=>{%>
+
+
+                        <tr>
+                            <td>
+                                <%=expense.date%>
+                            </td>
+                            <td>
+                                <%=expense.title%>
+                            </td>
+                            <td>
+                                R$<%=expense.value%>
+                                
+                            </td>
+                            <td>
+                                
+                                <form action="/user/expenses/delete/<%=expense.id%>" method="get">
+                                    <a href="" class="btn btn-dark">Read more</a>
+                                    <button type="submit" class="btn btn-warning">Delete</button>
+                                </form>
+                               
+                            </td>
+                        </tr>
+
+
+                    <%})
+
+                    %>
+                </tbody>
+            </table>
+            <div class="container d-flex justify-content-end">
+                <nav aria-label="...">
+                    <ul class="pagination">
+
+                        
+                      <%
+                      if(page-1 === 1 || page-1 > 1)
+                      {%>
+                        <li class="page-item ">
+                            <a class="page-link btn btn-dark" href="/user/expenses">Previous</a>
+                          </li>
+                     <% }
+                      else{%>
+                        <li class="page-item disabled ">
+                            <a class="page-link btn btn-dark" href="/">Previous</a>
+                          </li>
+                     <% }
+
+                          
+
+                    
+
+
+
+                      %>
+                      <li class="page-item  ">
+                        <a class="page-link btn btn-dark" href="/user/expenses/page/<%=page-1%>"><%=page-1%></a>
+                      </li>
+                      <li class="page-item active ">
+                        <a class="page-link btn btn-dark" href="#"><%=page%></a>
+                      </li>
+                      
+                      <%
+                      if(result.next)
+                      {%>
+
+                        <li class="page-item  ">
+                            <a class="page-link btn btn-dark" href="/user/expenses/page/<%=page+1%>"><%=page+1%></a>
+                          </li>
+                          
+                          <li class="page-item ">
+                            <a class="page-link btn btn-dark" href="/user/expenses/page/<%=page+1%>">NEXT</a>
+                          </li>
+                        
+                        <%}
+                        else{
+                            %>
+                            
+                            <li class="page-item disabled">
+                                <a class="page-link btn btn-dark" href="/user/expenses/page/<%=page+1%>">NEXT</a>
+                              </li>
+                            <%
+                        }
+                      %>
+                     
+                    </ul>
+                  </nav>
+            </div>
+
+            
+        </div>
+
+    </div>
+    
+
+
+
+</div>
+
+<%- include("../../partials/user/footer.ejs")%>

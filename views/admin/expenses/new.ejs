@@ -1,0 +1,68 @@
+<%- include("../../partials/admin/header.ejs")%>
+<%- include("../../partials/admin/navbar.ejs")%>
+<div class="container">
+    
+    <div class="card margin-top">
+        <div class="card-header">
+            <h1>Register a new expense</h1>
+        </div>
+
+    <div class="card-body">
+        <form action="/admin/expenses/save" method="post">
+
+           
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="title" >Title</label>
+                        <input type="text" name="title" class="form-control" required placeholder="Ex: clothes">
+                    </div>
+                    
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="valueExpense">Value</label>
+                        <input type="text" name="valueExpense" class="form-control" required placeholder="R$">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="category">Category</label>
+                        <select class="form-select form-control" aria-label="Default select example" name="category" required>
+                            <option selected>Select a category</option>
+                            <%
+                                categories.forEach((category)=>{
+                                    %>
+                                    <option value="<%=category.id%>"><%=category.title%></option>
+                                    <%
+                                })
+                            %>
+                            
+                          </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="date">Date</label>
+                        <input type="date" name="date" class="form-control" required>
+                    </div>
+
+                        <textarea name="description" id="descriptionArea" cols="30" rows="10" class="form-control gap-vertical-form" required></textarea>
+                    <div class="form-row ">
+                        <div class="form-group col-md-6">
+                            <button type="submit" class="btn btn-dark ">Register</button>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                </div>
+           
+            
+    
+    
+    
+        </form>
+    </div>
+    </div>
+    
+
+
+</div>
+<%- include("../../partials/admin/footer.ejs")%>

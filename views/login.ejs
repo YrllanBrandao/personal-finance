@@ -1,0 +1,46 @@
+<%- include("partials/header.ejs")%> <%- include("partials/navbar.ejs")%>
+<div class="container">
+  
+
+
+  
+  <div class="card margin-top">
+    <div class="card-header">
+      <h2>Login</h2>
+    </div>
+    <div class="card-body">
+      <form action="/authenticate" method="post">
+        <fieldset>
+          <label for="email" class="form-label">E-mail or Username</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="email@mail.com"
+            class="form-control"
+          />
+        </fieldset>
+        <fieldset>
+          <legend>Password</legend>
+          <input
+            type="password"
+            name="password"
+            placeholder="enter your password"
+            class="form-control"
+          />
+        </fieldset>
+
+        <fieldset class="form-vertical-gap">
+          <button class="btn btn-success mx-auto">Login</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<%- include("partials/footer.ejs")%>
+<script>
+  // Display a warning toast, with no title
+toastr.warning('My name is Inigo Montoya. You killed my father, prepare to die!')
+
+</script>

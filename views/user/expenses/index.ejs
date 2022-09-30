@@ -1,0 +1,108 @@
+<%- include("../../partials/user/header_graph.ejs")%>
+<%- include("../../partials/user/navbar.ejs")%>
+<div class="container">
+    
+    
+    <div class="card margin-top">
+
+       
+        <div class="card-header d-flex justify-content-center">
+            <h2 >Expenses</h2>
+            
+        </div>
+        <div class="card-body ">
+            <table class="table table-striped">
+                <thead>
+                    <th scope="col">Data</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Value</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Action</th>
+
+                </thead>
+                <tbody>
+                    <%
+                    expenses.rows.forEach((expense)=>{%>
+
+
+                        <tr>
+                            <td>
+                                <%=expense.date%>
+                            </td>
+                            <td>
+                                <%=expense.title%>
+                            </td>
+                            
+                            <td>
+                                R$<%=expense.value%>
+                                
+                            </td>
+                            <td>
+                                <%=expense.description%>
+                            </td>
+                            <td>
+                                
+                                <form action="/user/expenses/delete/<%=expense.id%>" method="get" onsubmit="deleteExpense(this, event)">
+                                    
+                                    <button type="submit" class="btn btn-warning">Delete</button>
+                                </form>
+                               
+                            </td>
+                        </tr>
+
+
+                    <%})
+
+                    %>
+                </tbody>
+            </table>
+            <div class="container d-flex justify-content-end">
+                <nav aria-label="...">
+                    <ul class="pagination">
+                      <%
+                      if(count > 5)
+                      {
+                          %>
+                        <li class="page-item disabled">
+                            <a class="page-link btn btn-dark">Previous</a>
+                          </li>
+                          <li class="page-item active" aria-current="page">
+                            <a class="page-link" href="#">1</a>
+                          </li>
+                          <li class="page-item"><a class="page-link" href="/user/expenses/page/2">2</a></li>
+                          
+                          <li class="page-item">
+                            <a class="page-link" href="/user/expenses/page/2">Next</a>
+                          </li>
+                          <%
+
+                          
+                      }
+                      
+                      %>
+
+                    </ul>
+                  </nav>
+            </div>
+        </div>
+
+    </div>
+    
+
+
+
+</div>
+
+<%- include("../../partials/user/footer.ejs")%>
+
+<script>
+    const deleteExpense = (form, event) =>{
+        event.preventDefault();
+        
+
+        if(confirm("Are you sure you want to delete this item?"))
+        {
+            form.submit();
+        }
+    }
+</script>
